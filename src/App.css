@@ -10,6 +10,8 @@ body{
 }
 #appName{
   color:white;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 60px
 }
 
 .white {

@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
+import './fonts.css';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import reducers from './reducers';
