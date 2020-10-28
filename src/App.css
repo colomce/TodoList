@@ -227,3 +227,7 @@ input#todoInput:focus, #todoItem:focus{
  {
    transform: none;
  }
+
+ .ant-spin-dot-item {
+  background-color: #ededed;
+}
