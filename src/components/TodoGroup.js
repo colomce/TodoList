@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItemContainer from '../containers/TodoItemContainer';
+import {Row, Col} from 'antd';
 
 class TodoGroup extends Component {
   render() {
@@ -7,9 +8,9 @@ class TodoGroup extends Component {
       <TodoItemContainer key={todo.id} todo={todo} />
     ));
     return (
-      <div>
-        {todos}
-      </div>
+      <Row>
+        <Col span={24}>{todos}</Col>
+    </Row>
     );
   }
 }
