@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addTodo } from '../apis/todo';
@@ -34,9 +33,6 @@ class TodoGenerator extends Component {
       });
       return;
     }
-
-    const id = uuidv4();
-    const todo = { id, text, done: false };
 
     addTodo(text).then(response => {
       this.props.addTodo(response.data);
