@@ -13,6 +13,7 @@ function App() {
       <header className="App-header">
         <span style={{display: 'inline-block' }}>
           <h1 id="appName"><img src={logo} width="60" alt="logo" />TodoList</h1>
+          <p style={{marginTop: '-35px'}}>The best todo app in the world!</p>
         </span>
 
         <Navigation />
