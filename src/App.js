@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <span style={{display: 'inline-block' }}>
           
-          <h1 id="appName"><img src={logo} width="70"/>TodoList</h1>
+          <h1 id="appName"><img src={logo} width="70" alt="logo" />TodoList</h1>
         </span>
 
         <BrowserRouter>
