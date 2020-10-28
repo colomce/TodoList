@@ -25,16 +25,15 @@ class TodoList extends Component {
     return (
 
       <Row>
-        <Col span={7}>col-8</Col>
+        <Col span={7}></Col>
         <Col span={10}>
             <div>
-            <h1 id="appName">TodoList</h1>
             <Link to="/done" className="white link">done</Link>
             <TodoGeneratorContainer/> 
             { this.state.loading ? (<Spinner/>) : (<TodoGroupContainer/>)}
             </div>
         </Col>
-        <Col span={7}>col-8</Col>
+        <Col span={7}></Col>
       </Row>
 
     );
