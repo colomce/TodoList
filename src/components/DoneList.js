@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import TodoItemView from './TodoItemView';
-import { Link } from 'react-router-dom';
 import { getTodos } from '../apis/todo';
 import Spinner from './Spinner';
+import {Row, Col} from 'antd';
 
 class DoneList extends Component {
     
@@ -24,12 +24,18 @@ class DoneList extends Component {
             .filter((todo) => todo.done)
             .map((todo) => (<TodoItemView key={todo.id} todo={todo}/>));
         return (
-            <div>
-                <h1 className="white">Done</h1>
-                <Link to="/" className="white link">todo</Link>
-                <div></div>
-                {this.state.loading ? (<Spinner/>) : doneTodo}
-            </div>
+
+            <Row>
+                <Col span={7}></Col>
+                <Col span={10}>
+                    <div>
+                        <div></div>
+                        {this.state.loading ? (<Spinner/>) : doneTodo}
+                    </div>
+                </Col>
+                <Col span={7}></Col>
+            </Row>
+
         );
     }
 }

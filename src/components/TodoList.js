@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TodoGeneratorContainer from '../containers/TodoGeneratorContainer';
 import TodoGroupContainer from '../containers/TodoGroupContainer';
-import {Link } from 'react-router-dom';
 import {getTodos} from '../apis/todo';
 import Spinner from './Spinner';
 import { Row, Col } from 'antd';
@@ -28,9 +27,8 @@ class TodoList extends Component {
         <Col span={7}></Col>
         <Col span={10}>
             <div>
-            <Link to="/done" className="white link">done</Link>
-            <TodoGeneratorContainer/> 
-            { this.state.loading ? (<Spinner/>) : (<TodoGroupContainer/>)}
+              <TodoGeneratorContainer/> 
+              { this.state.loading ? (<Spinner/>) : (<TodoGroupContainer/>)}
             </div>
         </Col>
         <Col span={7}></Col>
