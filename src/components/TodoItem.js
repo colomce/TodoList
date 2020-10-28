@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {deleteTodo, getTodos, updateTodo } from '../apis/todo';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {CheckSquareOutlined, RadiusBottomleftOutlined} from '@ant-design/icons';
 
 class TodoItem extends Component {
 
@@ -48,7 +49,11 @@ class TodoItem extends Component {
     return (
       <div>
         <div id="todoItem">
-          <span style={style} className="col-92" onClick={onClick}>{this.props.todo.text}</span>
+          <span style={style} className="col-92" onClick={onClick}>
+            {this.props.todo.done ? <CheckSquareOutlined /> : <RadiusBottomleftOutlined />}
+            &nbsp;
+            {this.props.todo.text}
+          </span>
           <span className="col-8" onClick={() => onDelete(this.props.todo.id)}><span id="deleteIcon">X</span></span>
         </div>
       </div>
