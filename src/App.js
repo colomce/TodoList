@@ -1,6 +1,6 @@
 import './App.css';
 import DoneListContainer from './containers/DoneListContainer';
-import {HashRouter, BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import { BrowserRouter, Route,Switch } from 'react-router-dom';
 import TodoListContainer from './containers/TodoListContainer';
 
 function App() {
