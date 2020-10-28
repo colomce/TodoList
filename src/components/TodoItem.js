@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {deleteTodo, getTodos, updateTodo } from '../apis/todo';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class TodoItem extends Component {
 
@@ -14,9 +15,15 @@ class TodoItem extends Component {
         getTodos().then(response => {
           this.props.getTodos(response.data);
           if (this.props.todo.done) {
-            alert(this.props.todo.text + " is marked as unfinished.");
+            toast.success(this.props.todo.text + " is marked as finished.", {
+              autoClose: 1500,
+              closeOnClick: true
+            });
           } else {
-            alert(this.props.todo.text + " is marked as finished.");
+            toast.error(this.props.todo.text + " is marked as unfinished.", {
+              autoClose: 1500,
+              closeOnClick: true
+            });
           }
         });
       });
@@ -26,7 +33,10 @@ class TodoItem extends Component {
       deleteTodo(id).then(response => {
         getTodos().then(response => {
           this.props.getTodos(response.data);
-          alert("Successfully removed " + this.props.todo.text + ".");
+          toast.success("Successfully removed " + this.props.todo.text + ".", {
+            autoClose: 1500,
+            closeOnClick: true
+          });
         })
       });
     }
