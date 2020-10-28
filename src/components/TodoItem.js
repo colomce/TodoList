@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {deleteTodo, getTodos, updateTodo } from '../apis/todo';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class TodoItem extends Component {
