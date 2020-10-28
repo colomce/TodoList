@@ -4,6 +4,7 @@ import { BrowserRouter, Route,Switch } from 'react-router-dom';
 import TodoListContainer from './containers/TodoListContainer';
 import logo from './images/leaf.png';
 import Navigation from './components/Navigation';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
 
         <Navigation />
         <Switch>
-          <Route path="/done" component={DoneListContainer} />
-          <Route path="/" component={TodoListContainer} />
+          <Route exact path="/done" component={DoneListContainer} />
+          <Route exact path="/" component={TodoListContainer} />
+          <Route path="*" component={NotFound} />
         </Switch>
 
       </header>
