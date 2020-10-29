@@ -45,6 +45,11 @@ class TodoItem extends Component {
             closeOnClick: true
           });
         })
+      }).catch( error => {
+        toast.error(error.response.data.message, {
+          autoClose: 1500,
+          closeOnClick: true
+        });
       });
     }
 
