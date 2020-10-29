@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TodoItemView from './TodoItemView';
-import { getTodos } from '../apis/todo';
+import { getDoneTodos } from '../apis/todo';
 import Spinner from './Spinner';
 import {Row, Col} from 'antd';
 
@@ -13,7 +13,7 @@ class DoneList extends Component {
 
     componentDidMount() {
         this.setState({loading: true});
-        getTodos().then(response => {
+        getDoneTodos().then(response => {
             this.props.getTodos(response.data);
             this.setState({loading: false});
         });
