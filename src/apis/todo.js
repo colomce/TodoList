@@ -4,6 +4,10 @@ export const getTodos = () => {
     return api.get("/api/todos");
 }
 
+export const getDoneTodos = () => {
+    return api.get("/api/todos?done=true");
+}
+
 export const addTodo = (text) => {
     return api.post("/api/todos", {
         text,
