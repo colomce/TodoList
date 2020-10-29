@@ -6,7 +6,8 @@ export const getTodos = () => {
 
 export const addTodo = (text) => {
     return api.post("/api/todos", {
-        text
+        text,
+        done: false
     });
 }
 
