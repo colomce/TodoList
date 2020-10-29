@@ -6,6 +6,11 @@ import {CheckSquareOutlined, RadiusBottomleftOutlined} from '@ant-design/icons';
 
 class TodoItem extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { editing: false}
+  }
+  
   render() {
 
     const todoIsDone = this.props.todo.done;
@@ -53,10 +58,25 @@ class TodoItem extends Component {
       });
     }
 
+    const enableEditing = () => {
+      this.setState({editing: true});
+    }
+
+    const saveTodo = () => {
+      this.setState({editing: false});
+    }
+
     const style = {
       textDecoration: todoIsDone ? 'line-through' : '',
       color: todoIsDone ? 'gray' : 'white'
     }
+
+    const inputBoxStyle = {
+      width : '96%', 
+      background: 'transparent', 
+      border: 'none'
+    };
+
     return (
       <div>
         <div id="todoItem">
@@ -65,7 +85,17 @@ class TodoItem extends Component {
               {this.props.todo.done ? <CheckSquareOutlined /> : <RadiusBottomleftOutlined />}
               &nbsp;
             </span>
-            <span style={style}>{this.props.todo.text}</span>
+            <span>
+              {
+                this.state.editing ? 
+                  (
+                    <input type="text" defaultValue={this.props.todo.text} onBlur={() => saveTodo()} style={inputBoxStyle}/>
+                  ) : 
+                  (
+                    <span style={style} onClick={() => enableEditing()}>{this.props.todo.text}</span>
+                  ) 
+              }
+            </span>
           </div>
           <span className="col-8" onClick={() => onDelete(this.props.todo.id)}><span id="deleteIcon">X</span></span>
         </div>
