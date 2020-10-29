@@ -28,7 +28,12 @@ class TodoItem extends Component {
             });
           }
         });
-      });
+      }).catch( error => {
+        toast.error(error.response.data.message, {
+          autoClose: 1500,
+          closeOnClick: true
+        });
+      }) ;
     }
 
     const onDelete = (id) => {
