@@ -8,7 +8,7 @@ class TodoItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { editing: false}
+    this.state = { editing: false, todoEditValue: ""}
   }
   
   render() {
@@ -59,11 +59,35 @@ class TodoItem extends Component {
     }
 
     const enableEditing = () => {
-      this.setState({editing: true});
+      this.setState({editing: true, todoEditValue: this.props.todo.text}, () => {
+        this.todoItemInputRef.focus();
+      });
     }
 
-    const saveTodo = () => {
-      this.setState({editing: false});
+    const saveTodo = (e) => {
+      const { id, text, done} = this.props.todo;
+
+      if(text === this.state.todoEditValue) {
+        this.setState({editing: false});
+        return;
+      }
+      
+      updateTodo(id,  {id, text: this.state.todoEditValue , done: done}).then(response => {
+        getTodos().then(response => {
+          this.props.getTodos(response.data);
+          this.setState({editing: false});
+          toast.success("Successfully updated to " + this.state.todoEditValue + ".", {
+            autoClose: 1500,
+            closeOnClick: true
+          });
+        });
+      }).catch( error => {
+        this.setState({editing: false});
+        toast.error(error.response.data.message, {
+          autoClose: 1500,
+          closeOnClick: true
+        });
+      });
     }
 
     const style = {
@@ -89,7 +113,11 @@ class TodoItem extends Component {
               {
                 this.state.editing ? 
                   (
-                    <input type="text" defaultValue={this.props.todo.text} onBlur={() => saveTodo()} style={inputBoxStyle}/>
+                    <input type="text" name="todoItemInput" 
+                        defaultValue={this.props.todo.text} 
+                        onChange={(e) => this.setState({todoEditValue: e.target.value})}
+                        onBlur={(e) => saveTodo(e)} style={inputBoxStyle}
+                        ref={(input) => { this.todoItemInputRef = input; }}/>
                   ) : 
                   (
                     <span style={style} onClick={() => enableEditing()}>{this.props.todo.text}</span>
