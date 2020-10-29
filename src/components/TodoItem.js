@@ -60,11 +60,13 @@ class TodoItem extends Component {
     return (
       <div>
         <div id="todoItem">
-          <span style={style} className="col-92" onClick={onClick}>
-            {this.props.todo.done ? <CheckSquareOutlined /> : <RadiusBottomleftOutlined />}
-            &nbsp;
-            {this.props.todo.text}
-          </span>
+          <div className="col-92">
+            <span onClick={onClick}>
+              {this.props.todo.done ? <CheckSquareOutlined /> : <RadiusBottomleftOutlined />}
+              &nbsp;
+            </span>
+            <span style={style}>{this.props.todo.text}</span>
+          </div>
           <span className="col-8" onClick={() => onDelete(this.props.todo.id)}><span id="deleteIcon">X</span></span>
         </div>
       </div>
