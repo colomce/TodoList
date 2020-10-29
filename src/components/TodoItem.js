@@ -11,8 +11,9 @@ class TodoItem extends Component {
     const todoIsDone = this.props.todo.done;
 
     const onClick = () => {
-      const { id, done } = this.props.todo;
-      updateTodo(id, !done).then(response => {
+      const { id, text, done} = this.props.todo;
+      const updatedTodo = {id, text, done: !done};
+      updateTodo(id, updatedTodo).then(response => {
         getTodos().then(response => {
           this.props.getTodos(response.data);
           if (this.props.todo.done) {
