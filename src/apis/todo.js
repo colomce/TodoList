@@ -16,9 +16,9 @@ export const addTodo = (text) => {
 }
 
 export const deleteTodo = (id) => {
-    return api.delete("/api/todos/" + id);
+    return api.delete(`/api/todos/${id}`);
 }
 
 export const updateTodo = (id, todo) => {
-    return api.put("/api/todos/" + id, todo);
+    return api.put(`/api/todos/${id}`, todo);
 }
